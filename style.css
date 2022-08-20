@@ -1,0 +1,150 @@
+@font-face {
+  font-family: roboto;
+  src: url(https://fonts.google.com/download?family=Roboto);
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'roboto', sans-serif;
+  font-size: 16px;
+  color: white;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: 80px min-content 1fr;
+  grid-template-areas:
+    'header header'
+    'sidebar search'
+    'sidebar content';
+  gap: 1px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding-right: 0px;
+}
+
+label {
+  position: relative;
+  right: -5px;
+}
+
+input {
+  border: 1px solid grey;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: inherit;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid cyan;
+}
+
+input[type="checkbox"] {
+  justify-self: left;
+  height: 30px;
+  width: 30px;
+}
+
+button {
+  padding: 0.25em 0.75em;
+  border-radius: 8px;
+  border: 1px solid grey;
+  min-width: 10ch;
+  min-height: 44px;
+  text-align: center;
+  line-height: 1.1;
+  background-color: #3e68ff;
+  color: #fff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2b32fc;
+}
+
+img.icon,
+img.logo {
+  height: 65px;
+  width: 65px;
+  filter: invert();
+}
+
+/* HEADER */
+div.header {
+  background-color: #2b32fc;
+  grid-area: header;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(2, min-content);
+  grid-template-rows: auto;
+}
+
+div.header div.left,
+div.header div.right,
+div.header div.right a {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-template-rows: auto;
+  align-items: center;
+  padding: 0 50px;
+}
+
+span.nav {
+  font-weight: bold;
+}
+
+span.logo {
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+
+/* SIDEBAR */
+div.sidebar {
+  background-color: #7276f7;
+  grid-area: sidebar;
+  padding: 40px;
+}
+
+form.create {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat() max-content;
+  gap: 10px;
+}
+
+div.form-control {
+  display: grid;
+  grid-template-columns: auto;
+  grid-row: max-content 1fr;
+}
+
+/* SEARCH */
+div.search {
+  background-color: #a6a9ff;
+  grid-area: search;
+  padding: 40px;
+}
+
+form.search {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+form.search>button {
+  grid-column: 1/5;
+}
+
+/* CONTENT */
+div.content {
+  grid-area: content;
+}

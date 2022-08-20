@@ -6,12 +6,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="scrips.js" defer></script>
+    <script src="scripts.js" defer></script>
     <title>Library | Odin</title>
   </head>
 
   <body>
 
+    <div class="header">
+      <div class="left">
+        <img class="logo" src="static/icons/bookmark-box-multiple.svg" alt="logo">
+        <span class="logo">LIBRARY</span>
+      </div>
+      <div class="right">
+        <a href="https://github.com/Nelfimov">
+          <img class="icon" src="static/icons/github.svg" alt="github">
+          <span class="nav">GitHub</span>
+        </a></span>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <div class="create">
+        <h2>Create new book</h2>
+        <form class="create" action="" method="post">
+          <div class="form-control">
+            <label for="createTitle">Title</label>
+            <input type="text" name="createTitle" id="createTitle">
+          </div>
+          <div class="form-control">
+            <label for="createAuthor">Author</label>
+            <input type="text" name="createAuthor" id="createAuthor">
+          </div>
+          <div class="form-control">
+            <label for="createPages">Number of pages</label>
+            <input type="number" name="createPages" id="createPages">
+          </div>
+          <div class="form-control">
+            <label for="createRead">Is read</label>
+            <input type="checkbox" name="createRead" id="createRead">
+          </div>
+          <button type="button">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="search">
+      <h2>Search for a book</h2>
+      <form class="search" action="" method="get">
+        <div class="form-control">
+          <label for="searchTitle">Title</label>
+          <input type="text" name="searchTitle" id="searchTitle">
+        </div>
+        <div class="form-control">
+          <label for="searchAuthor">Author</label>
+          <input type="text" name="searchAuthor" id="searchAuthor">
+        </div>
+        <div class="form-control">
+          <label for="searchPages">Number of pages</label>
+          <input type="number" name="searchPages" id="searchPages">
+        </div>
+        <div class="form-control">
+          <label for="searchRead">Is read</label>
+          <input type="checkbox" name="searchRead" id="searchRead">
+        </div>
+        <button type="button">Search</button>
+      </form>
+    </div>
+
+    <div class="content"></div>
   </body>
 
 </html>
