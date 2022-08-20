@@ -77,6 +77,23 @@ img.logo {
   filter: invert();
 }
 
+table,
+th,
+td,
+tr {
+  border: 1px dotted grey;
+  border-collapse: collapse;
+}
+
+th {
+  width: 400px;
+  padding: 10px;
+}
+
+td {
+  padding: 5px;
+}
+
 /* HEADER */
 div.header {
   background-color: #2b32fc;
@@ -136,7 +153,7 @@ div.search {
 
 form.search {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr) max-content;
   gap: 10px;
 }
 
@@ -146,5 +163,10 @@ form.search>button {
 
 /* CONTENT */
 div.content {
+  padding: 15px;
   grid-area: content;
+  color: black;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
 }
