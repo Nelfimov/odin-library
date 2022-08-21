@@ -1,6 +1,8 @@
 const searchForm = document.querySelector('form.search');
 const createForm = document.querySelector('form.create');
 const table = document.querySelector('tbody');
+let buttonRead = document.querySelectorAll('button.read');
+let buttonDelete = document.querySelectorAll('button.delete');
 const exampleBook1 = new Book(
   'Lord of the Rings',
   'J.R. Tolkien',
@@ -22,14 +24,17 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.getInfo = function () {
-  console.log(`The ${this.title} by ${this.author}, ${this.pages} pages, ${this.read === true ? 'is read' : 'is not read'}`)
-}
-
 function showBooksInLibrary(library) {
   table.replaceChildren(); // Renewing table
-  library.forEach(book => {
+  library.forEach((book, index) => {
     let row = document.createElement('tr');
+
+    let readBox = document.createElement('button');
+    readBox.textContent = 'READ'
+    readBox.setAttribute('data-book', index);
+    readBox.setAttribute('class', 'read');
+    let tdMarkRead = document.createElement('td');
+    tdMarkRead.appendChild(readBox);
 
     let tdTitle = document.createElement('td');
     tdTitle.textContent = book.title;
@@ -40,8 +45,32 @@ function showBooksInLibrary(library) {
     let tdRead = document.createElement('td');
     tdRead.textContent = book.read;
 
-    row.append(tdTitle, tdAuthor, tdPages, tdRead);
+    let deleteButton = document.createElement('button')
+    deleteButton.textContent = 'DELETE';
+    deleteButton.setAttribute('data-book', index);
+    deleteButton.setAttribute('class', 'delete');
+    let tdDeleteButton = document.createElement('td');
+    tdDeleteButton.appendChild(deleteButton);
+
+    row.append(tdMarkRead, tdTitle, tdAuthor, tdPages, tdRead, tdDeleteButton);
     table.appendChild(row);
+  })
+  buttonRead = document.querySelectorAll('button.read');
+  buttonDelete = document.querySelectorAll('button.delete');
+  buttonRead.forEach(button => {
+    button.addEventListener('click', () => {
+      if (myLibrary[button.getAttribute('data-book')].read === false) {
+        myLibrary[button.getAttribute('data-book')].read = true;
+        showBooksInLibrary(myLibrary);
+      }
+    })
+  })
+
+  buttonDelete.forEach(button => {
+    button.addEventListener('click', () => {
+      myLibrary.splice(button.getAttribute('data-book'), 1);
+      showBooksInLibrary(myLibrary);
+    })
   })
 }
 
@@ -74,6 +103,7 @@ function searchForBookInLibrary() {
     if (request.title.test(book.title) && request.read === book.read) return true;
     if (request.author.test(book.author) && request.read === book.read) return true;
     if (request.pages == book.pages && request.read === book.read) return true;
+    if (request.read == book.read) return true;
   })
   showBooksInLibrary(filteredLibrary);
 }
