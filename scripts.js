@@ -55,8 +55,8 @@ function showBooksInLibrary(library) {
     row.append(tdMarkRead, tdTitle, tdAuthor, tdPages, tdRead, tdDeleteButton);
     table.appendChild(row);
   })
+
   buttonRead = document.querySelectorAll('button.read');
-  buttonDelete = document.querySelectorAll('button.delete');
   buttonRead.forEach(button => {
     button.addEventListener('click', () => {
       if (myLibrary[button.getAttribute('data-book')].read === false) {
@@ -66,6 +66,7 @@ function showBooksInLibrary(library) {
     })
   })
 
+  buttonDelete = document.querySelectorAll('button.delete');
   buttonDelete.forEach(button => {
     button.addEventListener('click', () => {
       myLibrary.splice(button.getAttribute('data-book'), 1);

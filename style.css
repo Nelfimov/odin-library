@@ -90,8 +90,38 @@ th {
   padding: 10px;
 }
 
+th:first-child,
+th:last-child {
+  width: 180px;
+}
+
 td {
   padding: 5px;
+}
+
+td>button {
+  width: min-content;
+}
+
+td>button.delete {
+  background-color: red;
+}
+
+td>button.delete:hover {
+  background-color: #f27b77;
+}
+
+td>button.read {
+  background-color: green;
+}
+
+td>button.read:hover {
+  background-color: #51f542;
+}
+
+tbody td:first-child,
+tbody td:last-child {
+  text-align: center;
 }
 
 /* HEADER */
